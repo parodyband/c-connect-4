@@ -63,7 +63,6 @@ build/
 bin/
 
 # IDE-specific files
-.vscode/
 .idea/
 *.swp
 *.swo
