@@ -61,6 +61,7 @@ _deps
 # Build directories
 build/
 bin/
+cmake-build-debug/
 
 # IDE-specific files
 .idea/

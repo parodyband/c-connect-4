@@ -1,5 +1,12 @@
 {
     "cmake.configureOnOpen": true,
     "cmake.generator": "MinGW Makefiles",
-    "cmake.cmakePath": "cmake"
+    "cmake.cmakePath": "cmake",
+    "files.associations": {
+        "raylib.h": "c"
+    },
+    "cSpell.words": [
+        "LIGHTGRAY",
+        "RAYWHITE"
+    ]
 }
