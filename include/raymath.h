@@ -2186,5 +2186,4 @@ RMAPI int QuaternionEquals(Quaternion p, Quaternion q)
 
     return result;
 }
-
 #endif  // RAYMATH_H

@@ -3,7 +3,7 @@
 *   rlgl v4.5 - A multi-OpenGL abstraction layer with an immediate-mode style API
 *
 *   DESCRIPTION:
-*       An abstraction layer for multiple OpenGL versions (1.1, 2.1, 3.3 Core, 4.3 Core, ES 2.0)
+*       An abstraction layer for multiple OpenGL versions (1.1, 2.1, 3.3 core, 4.3 core, ES 2.0)
 *       that provides a pseudo-OpenGL 1.1 immediate-mode style API (rlVertex, rlTranslate, rlRotate...)
 *
 *   ADDITIONAL NOTES:
@@ -80,7 +80,7 @@
 *
 *   DEPENDENCIES:
 *      - OpenGL libraries (depending on platform and OpenGL version selected)
-*      - GLAD OpenGL extensions loading library (only for OpenGL 3.3 Core, 4.3 Core)
+*      - GLAD OpenGL extensions loading library (only for OpenGL 3.3 core, 4.3 core)
 *
 *
 *   LICENSE: zlib/libpng
@@ -170,13 +170,13 @@
     #endif
 #endif
 
-// OpenGL 2.1 uses most of OpenGL 3.3 Core functionality
+// OpenGL 2.1 uses most of OpenGL 3.3 core functionality
 // WARNING: Specific parts are checked with #if defines
 #if defined(GRAPHICS_API_OPENGL_21)
     #define GRAPHICS_API_OPENGL_33
 #endif
 
-// OpenGL 4.3 uses OpenGL 3.3 Core functionality
+// OpenGL 4.3 uses OpenGL 3.3 core functionality
 #if defined(GRAPHICS_API_OPENGL_43)
     #define GRAPHICS_API_OPENGL_33
 #endif
@@ -2195,7 +2195,7 @@ void rlglClose(void)
 void rlLoadExtensions(void *loader)
 {
 #if defined(GRAPHICS_API_OPENGL_33)     // Also defined for GRAPHICS_API_OPENGL_21
-    // NOTE: glad is generated and contains only required OpenGL 3.3 Core extensions (and lower versions)
+    // NOTE: glad is generated and contains only required OpenGL 3.3 core extensions (and lower versions)
     if (gladLoadGL((GLADloadfunc)loader) == 0) TRACELOG(RL_LOG_WARNING, "GLAD: Cannot load OpenGL extensions");
     else TRACELOG(RL_LOG_INFO, "GLAD: OpenGL extensions loaded successfully");
 
