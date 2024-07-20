@@ -33,6 +33,8 @@ add_executable(${PROJECT_NAME}
         src/math/Utils.h
         src/core/Bag.cpp
         src/core/Bag.h
+        src/core/Board.cpp
+        src/core/Board.h
 )
 
 # Create a custom target to copy resources

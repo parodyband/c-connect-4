@@ -5,13 +5,13 @@
 #include "Renderer.h"
 #include "Entity.h"
 #include "Bag.h"
+#include "Board.h"
 
-GameState GAME_STATE;
 
 int main() {
     GLOBAL_SCREEN_PARAMS = (ScreenParams) {1280, 720,1280, 720, 1,0, 60};
     GLOBAL_TIME = (Time) {0, 0};
-    GAME_STATE = (GameState) {{{0}}, 1};
+    GAME_STATE = (GameState) {{{0}}, 0};
 
     InitWindow(GLOBAL_SCREEN_PARAMS.screenWidth, GLOBAL_SCREEN_PARAMS.screenHeight, "Connect 4");
     InitAudioDevice();
@@ -25,16 +25,11 @@ int main() {
                                                           GLOBAL_SCREEN_PARAMS.screenHeight);
     Texture2D bagTexture = LoadTexture("resources/bag.png");
     Texture2D boardPieceTexture = LoadTexture("resources/board_piece.png");
-    Entity* boardPieces[7][6];
+    Texture2D checkerTexture = LoadTexture("resources/checker.png");
 
-    for (int i = 0; i < 7; i++) {
-        for (int j = 0; j < 6; j++) {
-            boardPieces[i][j] = new Entity((Vector2) {(float)(i - 3) * 64, (float)((j - 3) * 64) + 64}, 1.0f, true, boardPieceTexture, 0.0f, WHITE);
-            boardPieces[i][j]->setOrder(2);
-        }
-    }
 
     Bag bag = Bag((Vector2) {-310, 150}, 1.0f, true, bagTexture, 0.0f, WHITE);
+    Board board = Board(&boardPieceTexture,&checkerTexture);
 
     MAIN_CAMERA->zoom = 1.5f;
 
@@ -44,7 +39,7 @@ int main() {
         GLOBAL_TIME.deltaTime = GetFrameTime();
         GLOBAL_TIME.gameTime += GLOBAL_TIME.deltaTime;
 
-        if (IsKeyPressed(KEY_F11)) {
+        if (IsKeyPressed(KEY_F11) || IsKeyPressed(KEY_ENTER) && IsKeyDown(KEY_LEFT_ALT) || IsKeyPressed(KEY_ENTER) && IsKeyDown(KEY_RIGHT_ALT)){
             isFullscreen = !isFullscreen;
             int monitor = GetCurrentMonitor();
             if (isFullscreen) {
@@ -68,6 +63,7 @@ int main() {
         ClearBackground(DARKDARKBLUE);
 
         BeginMode2D(*MAIN_CAMERA);
+        board.Update();
         MAIN_RENDERER->Draw();
         EndMode2D();
 
@@ -95,11 +91,6 @@ int main() {
     UnloadTexture(bagTexture);
     UnloadTexture(boardPieceTexture);
     UnloadRenderTexture(FullScreenTexture);
-    for (auto & boardPiece : boardPieces) {
-        for (auto & j : boardPiece) {
-            delete j;
-        }
-    }
     CloseAudioDevice();
     CloseWindow();
     return 0;

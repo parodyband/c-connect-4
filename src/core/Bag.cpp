@@ -2,7 +2,6 @@
 #include "Bag.h"
 #include "Utils.h"
 
-
 void Bag::Update() {
     Entity::Update();
     UpdateDragging();
@@ -15,6 +14,20 @@ void Bag::UpdateDragging() {
         setTint(RED);
     } else {
         setTint(WHITE);
+    }
+
+    if (checker != nullptr) {
+        switch (GAME_STATE.currentPlayer) {
+            case 0:
+                checker->setTint(RED);
+                break;
+            case 1:
+                checker->setTint(BLUE);
+                break;
+            default:
+                checker->setTint(WHITE);
+                break;
+        }
     }
 
     if (IsMouseOver() && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
@@ -35,6 +48,7 @@ void Bag::UpdateDragging() {
             delete checker;
             checker = nullptr;
         }
+        GAME_STATE.currentPlayer == 1 ? GAME_STATE.currentPlayer = 0 : GAME_STATE.currentPlayer = 1;
     }
 
     if (dragging && IsMouseButtonDown(MOUSE_LEFT_BUTTON)) {

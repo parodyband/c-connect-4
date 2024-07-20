@@ -12,5 +12,6 @@ extern Time GLOBAL_TIME;
 
 extern Renderer* MAIN_RENDERER;
 extern Camera2D* MAIN_CAMERA;
+extern GameState GAME_STATE;
 
 #endif // CONNECTFOUR_GLOBAL_H
