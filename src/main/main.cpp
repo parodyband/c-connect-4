@@ -11,7 +11,9 @@
 int main() {
     GLOBAL_SCREEN_PARAMS = (ScreenParams) {1280, 720, 1280, 720, 1, 0, 60};
     GLOBAL_TIME = (Time) {0, 0};
-    GAME_STATE = (GameState) {{{0}}, 0};
+    GameState GAME_STATE;
+    
+    GameLogic::reset_board(GAME_STATE.board);
 
     InitWindow(GLOBAL_SCREEN_PARAMS.screenWidth, GLOBAL_SCREEN_PARAMS.screenHeight, "Connect 4");
     InitAudioDevice();
