@@ -9,7 +9,7 @@
 #include "GameLogic.h"
 
 int main() {
-    GLOBAL_SCREEN_PARAMS = (ScreenParams) {1280, 720,1280, 720, 1,0, 60};
+    GLOBAL_SCREEN_PARAMS = (ScreenParams) {1280, 720, 1280, 720, 1, 0, 60};
     GLOBAL_TIME = (Time) {0, 0};
     GAME_STATE = (GameState) {{{0}}, 0};
 
