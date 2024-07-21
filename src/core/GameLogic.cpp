@@ -19,7 +19,7 @@ void GameLogic::reset_board(BoardPiece board[6][7])
 
 }
 
-bool GameLogic::CheckIfWin(BoardPiece board[6][7])
+int GameLogic::CheckIfWin(BoardPiece board[6][7])
 {
 
     int keeptrackRed = 0;
@@ -48,11 +48,11 @@ bool GameLogic::CheckIfWin(BoardPiece board[6][7])
             }
             if (keeptrackRed == 4)
             {
-                return true;
+                return 1;
             }
             if (keeptrackBlue == 4)
             {
-                return true;
+                return 2;
             }
         }
     }
@@ -75,7 +75,7 @@ bool GameLogic::CheckIfWin(BoardPiece board[6][7])
             }
             if (keeptrackRed == 4)
             {
-                return true;
+                return 1;
             }
             if(board[j][i].GetOwner() == 2)
             {
@@ -87,7 +87,7 @@ bool GameLogic::CheckIfWin(BoardPiece board[6][7])
             }
             if (keeptrackBlue == 4)
             {
-                return true;
+                return 2;
             }
         }
     }
@@ -127,7 +127,7 @@ for (int k = 0; k < 4; k ++)
 
             if (keeptrackRed == 4)
             {
-                return true;
+                return 1;
             } 
 
             if(board[i-add][j].GetOwner() == 2)
@@ -141,7 +141,7 @@ for (int k = 0; k < 4; k ++)
 
             if (keeptrackBlue == 4)
             {
-                return true;
+                return 2;
             }
 
             if (i - add > 0)
@@ -193,7 +193,7 @@ for (int k = 0; k < 4; k ++)
 
             if (keeptrackRed == 4)
             {
-                return true;
+                return 1;
             }
 
             if(board[i-add][j].GetOwner() == 2)
@@ -207,7 +207,7 @@ for (int k = 0; k < 4; k ++)
 
             if (keeptrackBlue == 4)
             {
-                return true;
+                return 2;
             }
 
             if (i - add > 0)
@@ -222,6 +222,6 @@ for (int k = 0; k < 4; k ++)
     }
 }
 
-    return false;
+    return 0;
 }
 

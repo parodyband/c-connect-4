@@ -64,11 +64,21 @@ int main() {
 
         BeginMode2D(*MAIN_CAMERA);
         board.Update();
-        bool isWin = GameLogic::CheckIfWin(GAME_STATE->board);
-        if (isWin) {
-            DrawText("You Win!", -50, -200, 20, WHITE);
-        } else {
+        int isWin = GameLogic::CheckIfWin(GAME_STATE->board);
+        if (isWin == 1) {
+            DrawText("You Win RED!", -50, -200, 20, WHITE);
+        } 
+        else if(isWin == 2)
+        {
+             DrawText("You Win BLUE!", -50, -200, 20, WHITE);
+        }
+        else {
             DrawText("No Winners Yet", -50, -200, 20, WHITE);
+        }
+
+        if (IsKeyPressed(KEY_R))
+        {
+            GameLogic::reset_board(GAME_STATE->board);
         }
 
         MAIN_RENDERER->Draw();

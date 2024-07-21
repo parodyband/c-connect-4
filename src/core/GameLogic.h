@@ -5,7 +5,7 @@
 
 class GameLogic {
 public:
-    static bool CheckIfWin(BoardPiece board[6][7]);
+    static int CheckIfWin(BoardPiece board[6][7]);
     static void reset_board(BoardPiece board[6][7]);
 };
 
