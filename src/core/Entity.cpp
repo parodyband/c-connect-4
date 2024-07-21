@@ -26,6 +26,7 @@ void Entity::UpdateOrigin() {
 void Entity::Update() {
     UpdateRecs();
 }
+
 Entity::Entity(Vector2 pos, float scl, bool act, Texture2D tex, float rot, Color tnt)
         : position(pos), scale(scl), active(act), texture(tex), rotation(rot), tint(tnt) {
     Entity::setOrder(0);
@@ -33,6 +34,7 @@ Entity::Entity(Vector2 pos, float scl, bool act, Texture2D tex, float rot, Color
     UpdateOrigin();
     MAIN_RENDERER->RegisterEntity(this);
 }
+
 Entity::Entity(Texture2D texture) {
     this->texture = texture;
     this->position = {0, 0};

@@ -1,7 +1,6 @@
 #ifndef CONNECTFOUR_BOARD_H
 #define CONNECTFOUR_BOARD_H
 
-
 #include "raylib.h"
 
 class Board {

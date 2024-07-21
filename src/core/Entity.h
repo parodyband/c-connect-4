@@ -6,13 +6,11 @@
 
 class Entity {
 public:
-    // Constructor and Destructor
     Entity(Vector2 position, float scale, bool active, Texture2D texture, float rotation, Color tint);
     explicit Entity(Texture2D texture);
 
     ~Entity();
 
-    // Getters
     [[nodiscard]] Vector2 getPosition() const { return position; }
     [[nodiscard]] float getScale() const { return scale; }
     [[nodiscard]] bool isActive() const { return active; }
@@ -25,7 +23,6 @@ public:
     [[nodiscard]] int getOrder() const { return order; }
 
 
-    // Setters
     void setPosition(Vector2 entityPosition) {
         position = entityPosition;
         UpdateRecs();

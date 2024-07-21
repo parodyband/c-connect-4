@@ -6,6 +6,7 @@
         "raylib.h": "c"
     },
     "cSpell.words": [
+        "CONNECTFOUR",
         "LIGHTGRAY",
         "RAYWHITE"
     ]
