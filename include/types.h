@@ -3,8 +3,8 @@
 
 #include "BoardPiece.h"
 
-static const int board_width = 7;
-static const int board_height = 6;
+static const int rows = 6;
+static const int columns = 7;
 
 typedef struct ScreenParams {
     int screenWidth;
@@ -28,15 +28,8 @@ public:
         isDragging = false;
         draggingColumn = -1;
         draggingRow = -1;
-        for (int i = 0; i < board_width; i++) {
-            for (int j = 0; j < board_height; j++) {
-                board[i][j] = BoardPiece();
-                board[i][j].SetCol(i);
-                board[i][j].SetRow(j);
-            }
-        }
     }
-    BoardPiece board[board_width][board_height] = {};
+    BoardPiece board[rows][columns] = {};
     int currentPlayer;
     bool isDragging;
     int draggingColumn;

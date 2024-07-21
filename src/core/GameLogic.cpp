@@ -6,7 +6,7 @@
 #define ROW 6
 
 
-void GameLogic::reset_board(BoardPiece board[7][6])
+void GameLogic::reset_board(BoardPiece board[6][7])
 {
     for (int i = 0; i < ROW; i++)
     {
@@ -17,7 +17,7 @@ void GameLogic::reset_board(BoardPiece board[7][6])
     }
 }
 
-bool GameLogic::CheckIfWin(BoardPiece board[7][6])
+bool GameLogic::CheckIfWin(BoardPiece board[6][7])
 {
 
 //    int keeptrack;

@@ -49,7 +49,7 @@ void Bag::UpdateDragging() {
             checker = nullptr;
         }
         for (int i = 5; i > -1; i--) {
-            auto& curPiece = GAME_STATE->board[GAME_STATE->draggingColumn][i];
+            auto& curPiece = GAME_STATE->board[i][GAME_STATE->draggingColumn];
             if (curPiece.GetOwner() == 0) {
                 curPiece.SetCheckerVisible(true);
                 curPiece.SetOwner(GAME_STATE->currentPlayer);

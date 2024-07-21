@@ -9,8 +9,8 @@
 
 class GameLogic {
 public:
-    static bool CheckIfWin(BoardPiece board[7][6]);
-    static void reset_board(BoardPiece board[7][6]);
+    static bool CheckIfWin(BoardPiece board[6][7]);
+    static void reset_board(BoardPiece board[6][7]);
 };
 
 
