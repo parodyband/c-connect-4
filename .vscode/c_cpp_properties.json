@@ -3,7 +3,11 @@
         {
             "name": "Win32",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/include",
+                "${workspaceFolder}/src/core",
+                "${workspaceFolder}/src/graphics",
+                "${workspaceFolder}/src/math"
             ],
             "defines": [
                 "_DEBUG",
@@ -11,10 +15,10 @@
                 "_UNICODE"
             ],
             "windowsSdkVersion": "10.0.26100.0",
-            "compilerPath": "",
+            "compilerPath": "g++",
             "cStandard": "c17",
             "cppStandard": "c++17",
-            "intelliSenseMode": "windows-msvc-x64"
+            "intelliSenseMode": "windows-clang-x64"
         }
     ],
     "version": 4
