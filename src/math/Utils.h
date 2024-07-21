@@ -6,6 +6,8 @@
 #include "raymath.h"
 #include "Global.h"
 
+
+
 class Utils {
 public:
     static Vector2 MousePosition() {
