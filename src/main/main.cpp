@@ -6,7 +6,7 @@
 #include "Entity.h"
 #include "Bag.h"
 #include "Board.h"
-
+#include "GameLogic.h"
 
 int main() {
     GLOBAL_SCREEN_PARAMS = (ScreenParams) {1280, 720,1280, 720, 1,0, 60};
@@ -26,7 +26,6 @@ int main() {
     Texture2D bagTexture = LoadTexture("resources/bag.png");
     Texture2D boardPieceTexture = LoadTexture("resources/board_piece.png");
     Texture2D checkerTexture = LoadTexture("resources/checker.png");
-
 
     Bag bag = Bag((Vector2) {-310, 150}, 1.0f, true, bagTexture, 0.0f, WHITE);
     Board board = Board(&boardPieceTexture,&checkerTexture);
@@ -64,6 +63,13 @@ int main() {
 
         BeginMode2D(*MAIN_CAMERA);
         board.Update();
+        bool isWin = GameLogic::CheckIfWin(GAME_STATE.board);
+        if (isWin) {
+            DrawText("You Win!", -50, -200, 20, WHITE);
+        } else {
+            DrawText("No Winners Yet", -50, -200, 20, WHITE);
+        }
+
         MAIN_RENDERER->Draw();
         EndMode2D();
 
