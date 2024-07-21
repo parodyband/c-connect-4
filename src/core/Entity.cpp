@@ -51,3 +51,16 @@ Entity::Entity(Texture2D texture) {
 Entity::~Entity(){
     MAIN_RENDERER->UnregisterEntity(this);
 }
+
+Entity::Entity() {
+    this->texture = {};
+    this->position = {0, 0};
+    this->scale = 1;
+    this->rotation = 0;
+    this->tint = WHITE;
+    this->active = true;
+    UpdateRecs();
+    UpdateOrigin();
+    Entity::setOrder(0);
+    MAIN_RENDERER->RegisterEntity(this);
+}

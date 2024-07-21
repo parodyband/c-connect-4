@@ -17,7 +17,7 @@ void Bag::UpdateDragging() {
     }
 
     if (checker != nullptr) {
-        switch (GAME_STATE.currentPlayer) {
+        switch (GAME_STATE->currentPlayer) {
             case 1:
                 checker->setTint(RED);
                 break;
@@ -31,7 +31,7 @@ void Bag::UpdateDragging() {
     }
 
     if (IsMouseOver() && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
-        dragging = true;
+        GAME_STATE->isDragging = true;
         if (canCreateChecker) {
             checker = new Entity(mouseWorldPos, 1, true, checkerTexture, 0, WHITE);
             checker->setOrder(5);
@@ -42,16 +42,24 @@ void Bag::UpdateDragging() {
     }
 
     if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
-        dragging = false;
+        GAME_STATE->isDragging = false;
         canCreateChecker = true;
         if (checker != nullptr) {
             delete checker;
             checker = nullptr;
         }
-        GAME_STATE.currentPlayer == 1 ? GAME_STATE.currentPlayer = 2 : GAME_STATE.currentPlayer = 1;
+        for (int i = 5; i > -1; i--) {
+            auto& curPiece = GAME_STATE->board[GAME_STATE->draggingColumn][i];
+            if (curPiece.GetOwner() == 0) {
+                curPiece.SetCheckerVisible(true);
+                curPiece.SetOwner(GAME_STATE->currentPlayer);
+                break;
+            }
+        }
+        GAME_STATE->currentPlayer == 1 ? GAME_STATE->currentPlayer = 2 : GAME_STATE->currentPlayer = 1;
     }
 
-    if (dragging && IsMouseButtonDown(MOUSE_LEFT_BUTTON)) {
+    if (GAME_STATE->isDragging && IsMouseButtonDown(MOUSE_LEFT_BUTTON)) {
         Vector2 newPosition = Vector2Add(mouseWorldPos, dragOffset);
         if (checker != nullptr)
             checker->setPosition(newPosition);

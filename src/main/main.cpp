@@ -3,7 +3,6 @@
 #include "types.h"
 #include "Global.h"
 #include "Renderer.h"
-#include "Entity.h"
 #include "Bag.h"
 #include "Board.h"
 #include "GameLogic.h"
@@ -11,9 +10,8 @@
 int main() {
     GLOBAL_SCREEN_PARAMS = (ScreenParams) {1280, 720, 1280, 720, 1, 0, 60};
     GLOBAL_TIME = (Time) {0, 0};
-    GameState GAME_STATE;
-    
-    GameLogic::reset_board(GAME_STATE.board);
+    GAME_STATE = new GameState();
+    //GameLogic::reset_board(GAME_STATE.board);
 
     InitWindow(GLOBAL_SCREEN_PARAMS.screenWidth, GLOBAL_SCREEN_PARAMS.screenHeight, "Connect 4");
     InitAudioDevice();
@@ -30,7 +28,7 @@ int main() {
     Texture2D checkerTexture = LoadTexture("resources/checker.png");
 
     Bag bag = Bag((Vector2) {-310, 150}, 1.0f, true, bagTexture, 0.0f, WHITE);
-    Board board = Board(&boardPieceTexture,&checkerTexture);
+    Board board = Board(boardPieceTexture,checkerTexture);
 
     MAIN_CAMERA->zoom = 1.5f;
 
@@ -65,7 +63,7 @@ int main() {
 
         BeginMode2D(*MAIN_CAMERA);
         board.Update();
-        bool isWin = GameLogic::CheckIfWin(GAME_STATE.board);
+        bool isWin = GameLogic::CheckIfWin(GAME_STATE->board);
         if (isWin) {
             DrawText("You Win!", -50, -200, 20, WHITE);
         } else {
@@ -98,6 +96,7 @@ int main() {
 
     UnloadTexture(bagTexture);
     UnloadTexture(boardPieceTexture);
+    UnloadTexture(checkerTexture);
     UnloadRenderTexture(FullScreenTexture);
     CloseAudioDevice();
     CloseWindow();

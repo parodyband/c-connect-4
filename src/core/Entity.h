@@ -2,12 +2,13 @@
 #define CONNECTFOUR_ENTITY_H
 
 #include "raylib.h"
-#include "Global.h"
 
 class Entity {
 public:
     Entity(Vector2 position, float scale, bool active, Texture2D texture, float rotation, Color tint);
     explicit Entity(Texture2D texture);
+
+    Entity();
 
     ~Entity();
 
@@ -40,13 +41,13 @@ public:
     virtual void Update();
 
 private:
-    int order;
+    int order{};
     Vector2 position{};
     Vector2 origin{};
-    float scale;
-    bool active;
+    float scale{};
+    bool active{};
     Texture2D texture{};
-    float rotation;
+    float rotation{};
     Color tint{};
     Rectangle sourceRec{};
     Rectangle destRec{};

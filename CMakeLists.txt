@@ -37,6 +37,8 @@ add_executable(${PROJECT_NAME}
         src/core/Board.h
         src/core/GameLogic.cpp
         src/core/GameLogic.h
+        src/core/BoardPiece.cpp
+        src/core/BoardPiece.h
 )
 
 # Create a custom target to copy resources

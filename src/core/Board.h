@@ -5,12 +5,12 @@
 
 class Board {
 public:
-    Board(Texture2D* boardTexture, Texture2D* checkerTexture);
-
+    Board(Texture2D boardTexture, Texture2D checkerTexture);
     void Update();
+    
 private:
-    Texture2D* boardTexture;
-    Texture2D* checkerTexture;
+    Texture2D boardTexture{};
+    Texture2D checkerTexture{};
     void UpdateBoard();
 };
 
