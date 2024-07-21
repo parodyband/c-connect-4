@@ -1,3 +1,4 @@
+#include <cstdio>
 #include "BoardPiece.h"
 #include "Utils.h"
 
@@ -26,7 +27,10 @@ void BoardPiece::CheckHover() {
 
 void BoardPiece::Update() {
     Entity::Update();
-    CheckHover();
+    CheckHover();char charArray[50];
+    snprintf(charArray, sizeof(charArray), "%d", Owner);
+    auto pos= getPosition();
+    DrawText(charArray, (int)pos.x, (int)pos.y, 20, WHITE);
 }
 
 BoardPiece::BoardPiece() = default;
