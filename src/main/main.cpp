@@ -34,8 +34,6 @@ int main() {
 
     bool isFullscreen = false;
 
-    //Rectangle button = { 360, 280, 80, 30 };  // Create button
-
     while (!WindowShouldClose()) {
         GLOBAL_TIME.deltaTime = GetFrameTime();
         GLOBAL_TIME.gameTime += GLOBAL_TIME.deltaTime;
@@ -56,25 +54,7 @@ int main() {
             GLOBAL_SCREEN_PARAMS.screenScaleFactor = (float) GLOBAL_SCREEN_PARAMS.screenWidth /
                                                      (float) GLOBAL_SCREEN_PARAMS.actualWidth;
         }
-
-        /*
-        BeginDrawing();
-
-        if (CheckCollisionPointRec(GetMousePosition(), button))  // Check for mouse hover on button
-        {
-            DrawRectangleRec(button, RED);  // Change button color to indicate hover
-            
-            if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON))  // Check for left click on button
-            {
-                // Perform your button's action
-                CloseWindow();  // Example action: Close the window
-            }
-        }
-        else
-            DrawRectangleRec(button, GRAY);  // Normal button color
-        EndDrawing();
-        }
-        */
+        
 
         MAIN_CAMERA->offset = (Vector2){ (float)GLOBAL_SCREEN_PARAMS.screenWidth / 2.0f, (float)GLOBAL_SCREEN_PARAMS.screenHeight / 2.0f };
         MAIN_CAMERA->target = (Vector2){ 0, 0 };
