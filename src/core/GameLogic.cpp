@@ -22,64 +22,205 @@ void GameLogic::reset_board(BoardPiece board[6][7])
 bool GameLogic::CheckIfWin(BoardPiece board[6][7])
 {
 
-    int keeptrack;
+    int keeptrackRed = 0;
+    int keeptrackBlue = 0;
 
-    for(int i = ROW - 1; i > 0; i--)
+    // CHECKS WINS ON A ROW
+    for(int i = ROW; i > 0; i--)
     {
         for (int j = 0; j < COLUMN; j++)
         {
             if(board[i][j].GetOwner() == 1)
             {
-                keeptrack++;
+                keeptrackRed++;
             }
-            if (board[i][j].GetOwner() == 2)
+            else 
             {
-                keeptrack = 0;
+                keeptrackRed = 0;
             }
-            if (keeptrack == 4)
-            {
-                return true;
-            }
-        }
-    }
-
-
-
-    for(int i = ROW; i > 0; i--)
-    {
-        for (int j = 0; j < COLUMN; j++)
-        {
             if(board[i][j].GetOwner() == 2)
             {
-                keeptrack++;
+                keeptrackBlue++;
             }
-            if (board[i][j].GetOwner() == 1)
+            else
             {
-                keeptrack = 0;
+                keeptrackBlue = 0;
             }
-            if (keeptrack == 4)
+            if (keeptrackRed == 4)
+            {
+                return true;
+            }
+            if (keeptrackBlue == 4)
             {
                 return true;
             }
         }
     }
 
-    keeptrack = 0;
+    keeptrackBlue = 0;
+    keeptrackRed = 0;
+
+    //CHECKS WINS ON A COLUMN
+    for(int i = 0; i < COLUMN; i++)
+    {
+        for (int j = ROW-1; j >= 0; j--)
+        {
+            if(board[j][i].GetOwner() == 1)
+            {
+                keeptrackRed++;
+            }
+            else
+            {
+                keeptrackRed = 0;
+            }
+            if (keeptrackRed == 4)
+            {
+                return true;
+            }
+            if(board[j][i].GetOwner() == 2)
+            {
+                keeptrackBlue++;
+            }
+            else
+            {
+                keeptrackBlue = 0;
+            }
+            if (keeptrackBlue == 4)
+            {
+                return true;
+            }
+        }
+    }
+
+    keeptrackBlue = 0;
+    keeptrackRed = 0;
     int add = 0;
     int another = 0;
 
+//CHECKS WINS ON A DIAGNAL FROM LEFT TO RIGHT
+for (int k = 0; k < 4; k ++)
+{
+    for (int i = ROW-1; i >= 3; i--)
+    { 
+
+        if (i == ROW-1)
+        {
+            another++;
+        }
+        else
+        {
+            another = 0;
+        }
+
+        for (int j = k; j < COLUMN - another; j++)
+        {
+           
+            if(board[i-add][j].GetOwner() == 1)
+            {
+                keeptrackRed++;
+            }
+            else
+            {
+                keeptrackRed = 0;
+            }
+
+            if (keeptrackRed == 4)
+            {
+                return true;
+            } 
+
+            if(board[i-add][j].GetOwner() == 2)
+            {
+                keeptrackBlue++;
+            }
+            else
+            {
+                keeptrackBlue = 0;
+            }
+
+            if (keeptrackBlue == 4)
+            {
+                return true;
+            }
+
+            if (i - add > 0)
+            {
+                add++;
+            }
+            else
+            {
+                break;
+            }
+           
+        }
+    }
+}
+
+
+    keeptrackBlue = 0;
+    keeptrackRed = 0;
+    add = 0;
+    another = 0;
 
 //Checks wins for red on diagnal from right to left
 for (int k = 0; k < 4; k ++)
 {
-    for (int i = ROW; i >= 4; i--)
+    for (int i = ROW-1; i >= 3; i--)
     { 
-
-        if (i == ROW)
+        
+        if (i == ROW-1)
             {
                 another++;
             }
-        else
+            else
+            {
+                another = 0;
+            }
+
+        for (int j = COLUMN-1; j > another; j--)
+        {
+           
+            if(board[i-add][j].GetOwner() == 1)
+            {
+                keeptrackRed++;
+            }
+            else
+            {
+                keeptrackRed = 0;
+            }
+            if (keeptrackRed == 4)
+            {
+                return true;
+            }
+            if (i - add > 0)
+            {
+                add++;
+            }
+            else
+            {
+                break;
+            }
+        }
+    }
+}
+
+  
+    keeptrackBlue = 0;
+    keeptrackRed = 0;
+    add = 0;
+    another = 0;
+/*
+//Checks wins for BLUE on diagnal from left to right
+for (int k = 0; k < 4; k ++)
+{
+    for (int i = ROW-1; i >= 3; i--)
+    { 
+
+        if (i == ROW-1)
+            {
+                another++;
+            }
+            else
             {
                 another = 0;
             }
@@ -87,15 +228,15 @@ for (int k = 0; k < 4; k ++)
         for (int j = k; j < COLUMN - another; j++)
         {
            
-            if(board[i-add][j].GetOwner() == 1)
+            if(board[i-add][j].GetOwner() == 2)
             {
-                keeptrack++;
+                keeptrackBlue++;
             }
             else
             {
-                keeptrack = 0;
+                keeptrackBlue = 0;
             }
-            if (keeptrack == 4)
+            if (keeptrackBlue == 4)
             {
                 return true;
             }
@@ -111,33 +252,39 @@ for (int k = 0; k < 4; k ++)
     }
 }
 
-//Checks wins for red on diagnal from left to right
+
+
+    keeptrackBlue = 0;
+    keeptrackRed = 0;
+    add = 0;
+    another = 0;
+//Checks wins for BLUE on diagnal from right to left
 for (int k = 0; k < 4; k ++)
 {
-    for (int i = ROW; i >= 4; i--)
+    for (int i = ROW-1; i >= 3; i--)
     { 
         
-        if (i == ROW)
+        if (i == ROW-1)
             {
                 another++;
             }
-        else
+            else
             {
                 another = 0;
             }
 
-        for (int j = COLUMN; j > another; j--)
+        for (int j = COLUMN-1; j > another; j--)
         {
            
-            if(board[i-add][j].GetOwner() == 1)
+            if(board[i-add][j].GetOwner() == 2)
             {
-                keeptrack++;
+                keeptrackBlue++;
             }
             else
             {
-                keeptrack = 0;
+                keeptrackBlue = 0;
             }
-            if (keeptrack == 4)
+            if (keeptrackBlue == 4)
             {
                 return true;
             }
@@ -152,7 +299,7 @@ for (int k = 0; k < 4; k ++)
         }
     }
 }
-
+*/
     return false;
 }
 
