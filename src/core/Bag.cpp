@@ -18,10 +18,10 @@ void Bag::UpdateDragging() {
 
     if (checker != nullptr) {
         switch (GAME_STATE.currentPlayer) {
-            case 0:
+            case 1:
                 checker->setTint(RED);
                 break;
-            case 1:
+            case 2:
                 checker->setTint(BLUE);
                 break;
             default:
@@ -48,7 +48,7 @@ void Bag::UpdateDragging() {
             delete checker;
             checker = nullptr;
         }
-        GAME_STATE.currentPlayer == 1 ? GAME_STATE.currentPlayer = 0 : GAME_STATE.currentPlayer = 1;
+        GAME_STATE.currentPlayer == 1 ? GAME_STATE.currentPlayer = 2 : GAME_STATE.currentPlayer = 1;
     }
 
     if (dragging && IsMouseButtonDown(MOUSE_LEFT_BUTTON)) {
