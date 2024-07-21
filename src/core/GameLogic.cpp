@@ -13,13 +13,13 @@ void GameLogic::reset_board(BoardPiece board[6][7])
     {
         for (int j = 0; j < 6; j++)
         {
-            board[i][j] = 0;
+            board[i][j].SetOwner(0);
         }
     }
 
 }
 
-bool GameLogic::CheckIfWin(int board[7][6]) 
+bool GameLogic::CheckIfWin(BoardPiece board[6][7])
 {
 
     int keeptrack;
@@ -28,11 +28,11 @@ bool GameLogic::CheckIfWin(int board[7][6])
     {
         for (int j = 0; j < COLUMN; j++)
         {
-            if(board[i][j] == 1)
+            if(board[i][j].GetOwner() == 1)
             {
                 keeptrack++;
             }
-            if (board[i][j] == 2)
+            if (board[i][j].GetOwner() == 2)
             {
                 keeptrack = 0;
             }
@@ -49,11 +49,11 @@ bool GameLogic::CheckIfWin(int board[7][6])
     {
         for (int j = 0; j < COLUMN; j++)
         {
-            if(board[i][j] == 2)
+            if(board[i][j].GetOwner() == 2)
             {
                 keeptrack++;
             }
-            if (board[i][j] == 1)
+            if (board[i][j].GetOwner() == 1)
             {
                 keeptrack = 0;
             }
@@ -64,7 +64,7 @@ bool GameLogic::CheckIfWin(int board[7][6])
         }
     }
 
-    keeptrack == 0;
+    keeptrack = 0;
     int add = 0;
     int another = 0;
 
@@ -75,11 +75,11 @@ for (int k = 0; k < 4; k ++)
     for (int i = ROW; i >= 4; i--)
     { 
 
-        if (i = ROW)
+        if (i == ROW)
             {
                 another++;
             }
-            else
+        else
             {
                 another = 0;
             }
@@ -87,7 +87,7 @@ for (int k = 0; k < 4; k ++)
         for (int j = k; j < COLUMN - another; j++)
         {
            
-            if(board[i-add][j] == 1)
+            if(board[i-add][j].GetOwner() == 1)
             {
                 keeptrack++;
             }
@@ -117,11 +117,11 @@ for (int k = 0; k < 4; k ++)
     for (int i = ROW; i >= 4; i--)
     { 
         
-        if (i = ROW)
+        if (i == ROW)
             {
                 another++;
             }
-            else
+        else
             {
                 another = 0;
             }
@@ -129,7 +129,7 @@ for (int k = 0; k < 4; k ++)
         for (int j = COLUMN; j > another; j--)
         {
            
-            if(board[i-add][j] == 1)
+            if(board[i-add][j].GetOwner() == 1)
             {
                 keeptrack++;
             }
