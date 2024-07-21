@@ -112,6 +112,8 @@ bool GameLogic::CheckIfWin(int board[7][6])
     int add = 0;
     int another = 0;
 
+
+//Checks wins for red on diagnal from right to left
 for (int k = 0; k < 4; k ++)
 {
     for (int i = ROW; i >= 4; i--)
@@ -153,7 +155,7 @@ for (int k = 0; k < 4; k ++)
     }
 }
 
-
+//Checks wins for red on diagnal from left to right
 for (int k = 0; k < 4; k ++)
 {
     for (int i = ROW; i >= 4; i--)
@@ -168,7 +170,7 @@ for (int k = 0; k < 4; k ++)
                 another = 0;
             }
 
-        for (int j = k; j < COLUMN - another; j++)
+        for (int j = COLUMN; j > another; j--)
         {
            
             if(board[i-add][j] == 1)
