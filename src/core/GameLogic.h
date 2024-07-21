@@ -1,7 +1,3 @@
-//
-// Created by AustinCrane-Work on 7/20/2024.
-//
-
 #ifndef CONNECTFOUR_GAMELOGIC_H
 #define CONNECTFOUR_GAMELOGIC_H
 #include "Board.h"
